@@ -7,8 +7,11 @@
 	</head>
 	<body>
 		<section id="parallax-wrapper">
-			<div class="parallax" id="fish" />
-
+			<div id="worm"></div>
+			<div class="parallax" id="fish"></div>
+			<div class="parallax" id="fish2"></div>
+			<div class="parallax" id="bubbles"></div>
+			<div class="parallax" id="bubbles-2"></div>
 		</section>
 
 		<header>
@@ -19,4 +22,29 @@
 		<footer>
 		</footer>
 	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var fish = document.querySelector('#fish'),
+				fish2 = document.querySelector('#fish2'),
+				bubbles = document.querySelector('#bubbles'),
+				bubbles2 = document.querySelector('#bubbles-2'),
+				worm = document.querySelector('#worm');
+
+			window.onscroll = function(ev) {
+				var scrolled = window.scrollY;
+				console.log(scrolled);
+
+				fish.style.backgroundPosition = (0-(scrolled*0.3))+'px 0px';
+				fish2.style.backgroundPosition = (0-(scrolled*0.2))+'px 0px';
+				bubbles.style.backgroundPosition = '0px '+(0-(scrolled*1.5))+'px';
+				bubbles2.style.backgroundPosition = '80px '+(80-(scrolled*0.7))+'px';
+
+				if ( scrolled > 300 ) {
+					worm.style.webkitTransform = 'translate3d(0,0,0)';
+				} else {
+					worm.style.webkitTransform = 'translate3d(0,'+(scrolled - 450)+'px,0)';
+				}
+			}
+		}
+	</script>
 </html>
